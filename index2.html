@@ -283,9 +283,9 @@ function hexToRgb(e){var a=/^#?([a-f\d])([a-f\d])([a-f\d])$/i;e=e.replace(a,func
             document.getElementById("timer").innerHTML = `${minutes}:00`;
         }
 
-        let atkt = document.querySelectorAll(".third a");
+        let az = document.querySelectorAll(".third a");
 
-        atkt.forEach(item => {
+        az.forEach(item => {
             item.addEventListener("click", (event) => {
                 document.querySelector("iframe").remove();
                 document.querySelector(".third a").remove();
