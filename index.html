@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>BFL Münazara</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="first" id="1">
+            <div class="texts">
+                <h1>10/A</h1>
+                <h1>10/B</h1>
+            </div>
+
+            <a href="#2"><i class="fa-solid fa-forward fa-2xl"></i></a>
+        </div>
+
+        <div class="second" id="2">
+            <a href="#1"><i class="fa-solid fa-backward fa-2xl"></i></a>
+            <div class="items">
+                <h1 id="timer" class="saat" data-time="3">3:00</h1>
+                <div class="buttons">
+                    <button onclick="startTimer()">Başlat</button>
+                    <button onclick="resetTimer()">Sıfırla</button>
+                    <button onclick="setTime(3); return false;">3 Dakika</button>
+                    <button onclick="setTime(2); return false;">2 Dakika</button>
+                </div>
+            </div>
+            <a href="#3"><i class="fa-solid fa-forward fa-2xl ikinci"></i></a>
+
+        </div>
+
+        <div class="third" id="3">
+            <iframe width="50%" height="50%" src="https://www.youtube.com/embed/EB6dmUM2tn4?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
+            <h1>KAZANAN: <a href="#10A">10/A</a> MI <a href="#10B">10/B</a>Mİ</h1>
+        </div>
+
+
+    </div>
+
+    
+
+    <script src="script.js"></script>
+</body>
+
+</html>
