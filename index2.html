@@ -227,7 +227,17 @@
 
     </div>
 
+    <script>
+        let az = document.querySelectorAll(".third a");
 
+        az.forEach(item => {
+            item.addEventListener("click", (event) => {
+                document.querySelector("iframe").remove();
+                document.querySelector(".third a").remove();
+                document.querySelector(".third h1").textContent = `Kazanan ${event.target.textContent}`;
+            });
+        });
+    </script>
     <script>/* -----------------------------------------------
 /* Author : Vincent Garreau  - vincentgarreau.com
 /* MIT license: http://opensource.org/licenses/MIT
@@ -283,15 +293,6 @@ function hexToRgb(e){var a=/^#?([a-f\d])([a-f\d])([a-f\d])$/i;e=e.replace(a,func
             document.getElementById("timer").innerHTML = `${minutes}:00`;
         }
 
-        let az = document.querySelectorAll(".third a");
-
-        az.forEach(item => {
-            item.addEventListener("click", (event) => {
-                document.querySelector("iframe").remove();
-                document.querySelector(".third a").remove();
-                document.querySelector(".third h1").textContent = `Kazanan ${event.target.textContent}`;
-            });
-        });
 
 
 
