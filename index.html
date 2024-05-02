@@ -214,7 +214,7 @@
 
         <div class="third" id="3">
             <h1>KARAR ZAMANI</h1>
-            <audio controls style="margin: 20px 0px;">
+            <audio class="survivor" controls style="margin: 20px 0px;">
                 <source src="karar.mp3" type="audio/mpeg">
             </audio>
             <h1 class="kazanan"></h1>
@@ -240,7 +240,7 @@
 
         az.forEach(item => {
             item.addEventListener("click", (event) => {
-                document.querySelector("audio").remove();
+                document.querySelector(".survivor").remove();
                 document.querySelector(".third a").remove();
                 document.querySelector(".third h1").remove();
                 document.querySelector(".third h1").textContent = `ŞAMPİYON ${event.target.textContent}!`;
