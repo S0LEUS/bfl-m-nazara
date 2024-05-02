@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFL MÜNAZARA TARAFLAR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;   
+        }
+
+        form input[type=submit] {
+            border: 0;
+            width: 30vw;
+            height: 4vh;
+            margin: 15px 0px;
+            color: white;
+            border-radius: 15px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: rgb(0, 110, 255);
+        }
+
+        form label{
+            align-self: flex-start;
+        }
+
+        form input[type=text]{
+            outline: none;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 5vw;
+            border: 0;
+            padding: 0px 10px;
+            font-weight: bold;
+            height: 4vh;
+            width: 100%;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-content">
+        <form id="classForm">
+            <h1>BİNGÖL FEN LİSESİ MÜNAZARA TARAFLARI</h1>
+            <label for="classA">1. Sınıf Adı:</label>
+            <input type="text" id="classA" name="classA">
+            <label for="classB">2. Sınıf Adı:</label>
+            <input type="text" id="classB" name="classB">
+            <input type="submit" value="Kaydet">
+        </form>
+    </div>
+</body>
+<script>
+    // Kullanıcı girdisini işleyen JavaScript kodları
+    document.getElementById("classForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+
+        let classA = document.getElementById("classA").value; // Sınıf A girdisini al
+        let classB = document.getElementById("classB").value; // Sınıf B girdisini al
+        localStorage.setItem("classA", classA); // localStorage'e Sınıf A'yı kaydet
+        localStorage.setItem("classB", classB); // localStorage'e Sınıf B'yi kaydet
+        document.querySelector("h1").innerText = "Kaydedildi!";
+        setInterval(()=>{document.querySelector("h1").innerText = "BİNGÖL FEN LİSESİ MÜNAZARA TARAFLARI";},3000)
+    });
+</script>
+
+</html>
