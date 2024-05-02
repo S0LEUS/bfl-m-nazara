@@ -4,18 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100%;
+            display: inline-flex;
+        }
+
+        .fa-forward {
+            z-index: 99;
+            position: relative;
+            right: 50px;
+            color: white;
+            text-shadow: 1px 1px 10px black;
+        }
+
+        .fa-backward {
+            z-index: 99;
+            position: relative;
+            left: 50px;
+            color: white;
+            text-shadow: 1px 1px 10px black;
+        }
+
+        .first {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100vw;
+        }
+
+        .first .texts {
+            z-index: 99;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .first h1 {
+            color: white;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 8vw;
+            text-shadow: 1px 1px 20px black;
+        }
+
+        .second {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100vw;
+            background: #000000;
+            background-size: 100% 100%;
+        }
+
+        .second h1 {
+            color: white;
+            font-size: 8vw;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .second .items {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+
+        .second .buttons button {
+            width: 100px;
+            height: 40px;
+            border: 0;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .second .buttons button:hover {
+            opacity: 0.9;
+        }
+
+        .third {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+        }
+
+        .third h1 {
+            color: white;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 3rem;
+        }
+
+        .third a {
+            text-decoration: none;
+        }
+
+        .third a{
+            color: rgb(0, 204, 102);
+        }
+
+        canvas {
+            display: block;
+            vertical-align: bottom;
+        }
+
+        /* ---- particles.js container ---- */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            background-image: url("");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+
+        /* ---- stats.js ---- */
+        .count-particles {
+            background: #000022;
+            position: absolute;
+            top: 48px;
+            left: 0;
+            width: 80px;
+            color: #13E8E9;
+            font-size: .8em;
+            text-align: left;
+            text-indent: 4px;
+            line-height: 14px;
+            padding-bottom: 2px;
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .js-count-particles {
+            font-size: 1.1em;
+        }
+
+        #stats,
+        .count-particles {
+            -webkit-user-select: none;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        #stats {
+            border-radius: 3px 3px 0 0;
+            overflow: hidden;
+        }
+
+        .count-particles {
+            border-radius: 0 0 3px 3px;
+        }
+    </style>
     <title>BFL Münazara</title>
 </head>
 
 <body>
     <div class="container">
+        <!-- particles.js container -->
         <div class="first" id="1">
+            <div id="particles-js"></div> <!-- stats - count particles -->
+            <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
             <div class="texts">
                 <h1>10/A</h1>
+                <h1>VS</h1>
                 <h1>10/B</h1>
             </div>
 
@@ -25,9 +198,10 @@
         <div class="second" id="2">
             <a href="#1"><i class="fa-solid fa-backward fa-2xl"></i></a>
             <div class="items">
-                <h1 id="timer" class="saat" data-time="3">3:00</h1>
+                <h1 id="timer" class="saat" data-time="1">3:00</h1>
                 <div class="buttons">
                     <button onclick="startTimer()">Başlat</button>
+                    <button onclick="pauseTimer()">Durdur</button>
                     <button onclick="resetTimer()">Sıfırla</button>
                     <button onclick="setTime(3); return false;">3 Dakika</button>
                     <button onclick="setTime(2); return false;">2 Dakika</button>
@@ -38,16 +212,104 @@
         </div>
 
         <div class="third" id="3">
-            <iframe width="50%" height="50%" src="https://www.youtube.com/embed/EB6dmUM2tn4?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe>
-            <h1>KAZANAN: <a href="#10A">10/A</a> MI <a href="#10B">10/B </a>Mİ (ÇOK AZ BİR FARKLA)</h1>
+            <h1>KARAR ZAMANI</h1>
+            <audio controls style="margin: 20px 0px;">
+                <source src="karar.mp3" type="audio/mpeg">
+            </audio>
+            <h1 class="kazanan"></h1>
         </div>
 
 
     </div>
+    <script src="confetti.js"></script>
+    <script>
 
-    
+        // localStorage'den sınıf adlarını çek
+        let savedClassA = localStorage.getItem("classA");
+        let savedClassB = localStorage.getItem("classB");
 
-    <script src="script.js"></script>
+        // Sınıf adlarını kullanarak sayfa içeriğini güncelle
+        if (savedClassA && savedClassB) {
+            document.querySelector(".first h1").textContent = savedClassA;
+            document.querySelector(".first h1:nth-child(3)").textContent = savedClassB;
+            document.querySelector(".third .kazanan").innerHTML = `KAZANAN: <a href="##">${savedClassA}</a> MI <a href="##">${savedClassB}</a> MI (ÇOK AZ BİR FARKLA)`;
+        }
+
+        let az = document.querySelectorAll(".third a");
+
+        az.forEach(item => {
+            item.addEventListener("click", (event) => {
+                document.querySelector("audio").remove();
+                document.querySelector(".third a").remove();
+                document.querySelector(".third h1").remove();
+                document.querySelector(".third h1").textContent = `ŞAMPİYON ${event.target.textContent}!`;
+                confetti.start();
+            });
+        });
+    </script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        let timer;
+        let timeLeft;
+        let isRunning = false;
+        let saat = document.getElementById("timer");
+
+        particlesJS("particles-js", { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true }); var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function () { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+
+        function startTimer() {
+            if (!isRunning) {
+                let currentMinutes = parseInt(saat.innerHTML.split(':')[0]);
+                let currentSeconds = parseInt(saat.innerHTML.split(':')[1]);
+                timeLeft = currentMinutes * 60 + currentSeconds; // Kaldığı yerden devam etmek için kalan zamanı al
+                isRunning = true;
+                saat.style.color = "lightgreen";
+                updateTimer();
+                timer = setInterval(updateTimer, 1000);
+            }
+        }
+
+
+        function resetTimer() {
+            clearInterval(timer);
+            isRunning = false;
+            saat.style.color = "white";
+            document.getElementById("timer").innerHTML = "0:00";
+        }
+
+        function pauseTimer() {
+            clearInterval(timer);
+            saat.style.color = "red";
+            isRunning = false;
+        }
+
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            saat.innerHTML = `${minutes}:${seconds}`;
+
+            if (timeLeft === 0) {
+                clearInterval(timer);
+                saat.style.color = "red";
+                isRunning = false;
+            } else {
+                timeLeft--;
+            }
+        }
+
+        function setTime(minutes) {
+            if (isRunning) {
+
+            } else {
+                saat.style.color = "white";
+            }
+
+            document.getElementById("timer").setAttribute('data-time', minutes);
+            document.getElementById("timer").innerHTML = `${minutes}:00`;
+        }
+    </script>
 </body>
 
 </html>
