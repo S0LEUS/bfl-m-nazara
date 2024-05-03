@@ -305,8 +305,6 @@
 
         // Sınıf adlarını kullanarak sayfa içeriğini güncelle
         if (savedClassA && savedClassB) {
-            document.querySelector(".first h1").textContent = savedClassA;
-            document.querySelector(".first h1:nth-child(3)").textContent = savedClassB;
             document.querySelector(".third .kazanan").innerHTML = `KAZANAN: <a href="##">${savedClassA}</a> MI <a href="##">${savedClassB}</a> MI (ÇOK AZ BİR FARKLA)`;
         }
 
