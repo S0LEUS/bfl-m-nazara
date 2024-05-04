@@ -191,31 +191,32 @@
                 BAŞLASIN</button>
         </div>
         <a href="#2" style="align-self: center;"><i class="fa-solid fa-forward fa-2xl"></i></a>
-    </div>
 
-    <div class="second" id="2">
-        <a href="#1"><i class="fa-solid fa-backward fa-2xl"></i></a>
-        <div class="items">
-            <h1 id="timer" class="saat">3:00</h1>
-            <div class="buttons">
-                <button onclick="startTimer()">Başlat</button>
-                <button onclick="pauseTimer()">Durdur</button>
-                <button onclick="resetTimer()">Sıfırla</button>
-                <button onclick="setTime(3); return false;">3 Dakika</button>
-                <button onclick="setTime(2); return false;">2 Dakika</button>
-                <audio style="display: none;" class="bip" src="bip.MP3"></audio>
+
+        <div class="second" id="2">
+            <a href="#1"><i class="fa-solid fa-backward fa-2xl"></i></a>
+            <div class="items">
+                <h1 id="timer" class="saat">3:00</h1>
+                <div class="buttons">
+                    <button onclick="startTimer()">Başlat</button>
+                    <button onclick="pauseTimer()">Durdur</button>
+                    <button onclick="resetTimer()">Sıfırla</button>
+                    <button onclick="setTime(3); return false;">3 Dakika</button>
+                    <button onclick="setTime(2); return false;">2 Dakika</button>
+                    <audio style="display: none;" class="bip" src="bip.MP3"></audio>
+                </div>
             </div>
+            <a href="#3"><i class="fa-solid fa-forward fa-2xl ikinci"></i></a>
+
         </div>
-        <a href="#3"><i class="fa-solid fa-forward fa-2xl ikinci"></i></a>
 
-    </div>
-
-    <div class="third" id="3">
-        <h1>KARAR ZAMANI</h1>
-        <audio controls style="margin: 20px 0px;">
-            <source src="karar.mp3" type="audio/mpeg">
-        </audio>
-        <h1 class="kazanan"></h1>
+        <div class="third" id="3">
+            <h1>KARAR ZAMANI</h1>
+            <audio controls style="margin: 20px 0px;">
+                <source src="karar.mp3" type="audio/mpeg">
+            </audio>
+            <h1 class="kazanan"></h1>
+        </div>
     </div>
 
 
@@ -227,7 +228,7 @@
         let isRunning = false;
         let saat = document.getElementById("timer");
 
-        
+
 
         function startTimer() {
             if (!isRunning) {
@@ -292,7 +293,7 @@
 
             intro.addEventListener('ended', function () {
                 baslat.style.display = "block";
-            intro.style.display = "none";
+                intro.style.display = "none";
                 location.href = "#2"
             });
 
