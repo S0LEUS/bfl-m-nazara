@@ -3,8 +3,6 @@ let timeLeft;
 let isRunning = false;
 let saat = document.getElementById("timer");
 
-
-
 function startTimer() {
     if (!isRunning) {
         let currentMinutes = parseInt(saat.innerHTML.split(':')[0]);
@@ -79,19 +77,23 @@ function playVideo() {
 let savedClassA = localStorage.getItem("classA");
 let savedClassB = localStorage.getItem("classB");
 
-// Sınıf adlarını kullanarak sayfa içeriğini güncelle
-if (savedClassA && savedClassB) {
-    document.querySelector(".third .kazanan").innerHTML = `ŞAMPİYON: <a href="##">${savedClassA}</a> MI <a href="##">${savedClassB}</a> MI`;
-}
-
-let az = document.querySelectorAll(".third a");
+let az = document.querySelectorAll(".third .box");
 
 az.forEach(item => {
     item.addEventListener("click", (event) => {
-        document.querySelector(".third audio").remove();
-        document.querySelector(".third a").remove();
-        document.querySelector(".third h1").remove();
-        document.querySelector(".third h1").textContent = `ŞAMPİYON ${event.target.textContent}!`;
+        document.querySelector(".third .image").remove();
+        let kazanan = document.createElement("h1");
+        if(item == az[0]){
+            kazanan.innerText = "Şampiyon 10/A!";
+            kazanmamuz = document.createElement("audio");
+            kazanmamuz.src = "kazanma.mp3";
+            document.querySelector(".third").appendChild(kazanmamuz);
+            kazanmamuz.play()
+        }
+        if(item == az[1]){
+            kazanan.innerText = "Şampiyon 11/A!";
+        }
+        document.querySelector(".third").appendChild(kazanan);
         confetti.start();
     });
 });
