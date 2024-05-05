@@ -73,9 +73,6 @@ function playVideo() {
     intro.play();
 }
 
-// localStorage'den sınıf adlarını çek
-let savedClassA = localStorage.getItem("classA");
-let savedClassB = localStorage.getItem("classB");
 
 let az = document.querySelectorAll(".third .box");
 
